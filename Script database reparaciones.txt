@@ -1,0 +1,47 @@
+DROP DATABASE Reparaciones;
+
+CREATE DATABASE Reparaciones;
+
+USE Reparaciones;
+
+CREATE TABLE Clientes(
+ID_Cliente int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+Nombre VARCHAR(255),
+Domicilio VARCHAR(255),
+RFC VARCHAR(255),
+Email VARCHAR(255),
+Telefono VARCHAR(255));
+
+CREATE TABLE Registros(
+ID_Registro int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+FK_Clientes int(11) NOT NULL,
+Fecha DATE,
+Articulo VARCHAR(255),
+Marca VARCHAR(255),
+Modelo VARCHAR(255),
+Bateria tinyint(1),
+Cargador tinyint(1),
+Password VARCHAR(255),
+Falla VARCHAR(255),
+Notas VARCHAR(255),
+Estado VARCHAR(255),
+Costo VARCHAR(255),
+Reparador VARCHAR(255),
+FOREIGN KEY (FK_Clientes) REFERENCES Clientes(ID_Cliente));
+
+
+CREATE TABLE Empresa(
+Nombre VARCHAR(255),
+Direccion VARCHAR(255),
+Telefono VARCHAR(255),
+Email VARCHAR(255),
+Pagina VARCHAR(255),
+Facebook VARCHAR(255),
+Anotacion VARCHAR(255),
+RutaLogo VARCHAR(255));
+
+
+SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE TABLE Clientes;
+TRUNCATE TABLE Registros;
+SET FOREIGN_KEY_CHECKS = 1;
